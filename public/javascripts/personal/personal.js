@@ -1,0 +1,38 @@
+class Empleado {
+	constructor(){
+		this.url = 'personal/empleado';
+	}
+
+	async postEmpleado(data) {
+		fetch(this.url, {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(data => {
+			console.log(data);
+		});
+	}
+	
+	async getEmpleados() {
+		let response = await fetch(this.url);
+		return response.json();
+	}
+
+	async getEmpleado(id) {
+		let response = await fetch(this.url + '/' + id);
+		return response.json();
+	}
+
+	async putEmpleado(){}
+
+	async deleteEmpleado(id){
+		await fetch(this.url + '/' + id, { method: 'DELETE' });
+		return;
+	}
+
+}
+
+
+module.exports = Empleado;
