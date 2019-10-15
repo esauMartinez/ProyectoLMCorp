@@ -24,7 +24,6 @@ const empleados = new Schema({
 	campamento: String,
 	unidad_trabajo: String,
 	correo: String,
-	activo: Boolean,
 	calle: String,
 	num_ext: String,
 	num_int: String,
@@ -33,7 +32,8 @@ const empleados = new Schema({
 	estado: String,
 	municipio: String,
 	pais: String,
-	poblacion: String
+	poblacion: String,
+	activo: { type: Boolean, default: true }
 });
 
 // const direccions = new Schema({
@@ -61,7 +61,11 @@ mongoose.model('empleado', empleados);
 mongoose.model('familiares', familiares);
 mongoose.model('credencial', credencials);
 
-mongoose.connect("mongodb://localhost/db_mina", {
+mongoose.connect("mongodb://esau:mace930111@ds229078.mlab.com:29078/db_mina", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
-});
+})
+// mongoose.connect("mongodb://localhost/db_mina", {
+// 	useNewUrlParser: true,
+// 	useUnifiedTopology: true
+// });

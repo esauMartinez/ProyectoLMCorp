@@ -1,6 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-left: 350px;
+  transition: 1s;
 }
 
 a {
@@ -13,7 +14,8 @@ a {
   bottom: 0;
   left: 0;
   width: 350px;
-  background: rgba(80, 80, 80, 0.671);
+  background: rgba(80, 80, 80, 0.582);
+  transition: 1s width;
 }
 
 @media (max-width: 800px) {
@@ -50,4 +52,17 @@ a {
 
 .active {
   background: rgb(43, 43, 43);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-ver-menu {
+  padding: 10px;
+  font-size: 24px;
+  border: 0;
+  background: none;
+  color: #fff;
 }

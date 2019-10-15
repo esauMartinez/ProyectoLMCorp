@@ -39,6 +39,19 @@ router.get('/empleado/:id', async function (req, res, next) {
 	});
 });
 
+router.post('/empleado/estatus', async function (req, res, next) {
+	let empleado = mongoose.model('empleado');
+	let id = req.body.id;
+	let newStatus = req.body.cambio;
+	await empleado.findByIdAndUpdate(id, { activo: newStatus }, function (err, data) {
+		if (err) {
+			res.send('error');
+		} else {
+			res.send(data);
+		}
+	});
+});
+
 router.delete('/empleado/:id', async function (req, res, next) {
 	let empleado = mongoose.model('empleado');
 	let id = req.params.id;

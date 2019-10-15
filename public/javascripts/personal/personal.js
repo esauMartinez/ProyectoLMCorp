@@ -25,6 +25,19 @@ class Empleado {
 		return response.json();
 	}
 
+	async cambiarEstatus(data, cambio){
+		let id = data.split('_')[1];
+		let response = await fetch(this.url + '/estatus', {
+			method: 'POST',
+			body: JSON.stringify({ id: id, cambio: cambio }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(data => {
+			return data.json();
+		});
+	}
+
 	async putEmpleado(){}
 
 	async deleteEmpleado(id){

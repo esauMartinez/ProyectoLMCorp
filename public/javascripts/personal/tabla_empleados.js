@@ -14,6 +14,7 @@ let tabla_empleados = function(data){
 							<th>Estado</th>
 							<th>Municipio</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="tb-empleados"></tbody>
@@ -21,7 +22,7 @@ let tabla_empleados = function(data){
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-2 offset-lg-10">
+			<div class="col-lg-2 offset-lg-10 mt-3">
 				<button type="button" class="btn btn-danger btn-block" id="regresar-menu">Cancelar</button>
 			</div>
 		</div>
@@ -37,7 +38,8 @@ let tabla_empleados = function(data){
 				<td>${element.campamento}</td>
 				<td>${element.unidad_trabajo}</td>
 				<td>${element.estado}</td>
-				<td>${element.estado}</td>
+				<td>${element.municipio}</td>
+				<td id='_${element._id}'></td>
 				<td>
 					<div class="d-flex justify-content-between">
 						<button class="btn btn-primary ver-empleado" id="${element._id}">Ver</button>
@@ -47,6 +49,22 @@ let tabla_empleados = function(data){
 				</td>
 			</tr>
 		`;
+
+		if (element.activo === true) {
+			document.getElementById(`_${element._id}`).innerHTML = `
+				<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input activar" id="id_${element._id}" checked>
+					<label class="custom-control-label" for="id_${element._id}">Activo</label>
+				</div>
+			`;
+		} else {
+			document.getElementById(`_${element._id}`).innerHTML = `
+				<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input activar" id="id_${element._id}">
+					<label class="custom-control-label" for="id_${element._id}">Inactivo</label>
+				</div>
+			`;
+		}
 	});
 };
 

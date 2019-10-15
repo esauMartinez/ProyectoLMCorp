@@ -15,6 +15,8 @@ let inertar_menu = function(){
 	document.getElementById('btn-ver-empleados').addEventListener('click', function () {
 		insertar_tabla();
 	});
+
+	document.getElementById('btn-personal').style.background = 'rgb(43, 43, 43)';
 };
 inertar_menu();
 
@@ -69,6 +71,17 @@ let insertar_tabla = function () {
 			const element = btn_eli[i];
 			element.onclick = function () {
 				eliEmpleado(element.id);
+			}
+		}
+
+		let btn_activar = document.getElementsByClassName('activar');
+		for (let i = 0; i < btn_activar.length; i++) {
+			const element = btn_activar[i];
+			element.onclick = function(){
+				let cambio = empleado.cambiarEstatus(this.id, this.checked);
+				cambio.then(() => {
+					insertar_tabla();
+				});
 			}
 		}
 

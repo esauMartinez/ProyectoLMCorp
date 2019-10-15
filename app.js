@@ -8,12 +8,14 @@ var indexRouter = require('./routes/index');
 var inventarioRouter = require('./routes/inventario');
 var proveedorRouter = require('./routes/proveedor');
 var personalRouter = require('./routes/personal');
+var unidadRouter = require('./routes/unidad');
 
 // schemas db 
 var usuario = require('./model/usuario');
 var inventario = require('./model/inventario');
 var inventario = require('./model/proveedor');
 var personal = require('./model/personal');
+var unidad = require('./model/unidad');
 
 var app = express();
 
@@ -31,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/inventario', inventarioRouter);
 app.use('/proveedor', proveedorRouter);
 app.use('/personal', personalRouter);
+app.use('/unidad', unidadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

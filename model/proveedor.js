@@ -38,4 +38,8 @@ const tipoProveedors = new Schema({
 mongoose.model('proveedor', proveedores);
 mongoose.model('tipoProveedor', tipoProveedors);
 
-mongoose.connect("mongodb://localhost/db_mina", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://esau:mace930111@ds229078.mlab.com:29078/db_mina", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+// mongoose.connect("mongodb://localhost/db_mina", { useNewUrlParser: true, useUnifiedTopology: true });

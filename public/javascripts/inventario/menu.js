@@ -117,5 +117,7 @@ function menu(){
     document.getElementById('btn-entradas').addEventListener('click', function () {
         entradas();
     });
+
+    document.getElementById('btn-inventario').style.background = 'rgb(43, 43, 43)';
 };
 menu();
