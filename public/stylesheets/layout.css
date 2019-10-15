@@ -24,6 +24,18 @@ a {
   }
 }
 
+.titulo-menu {
+  display: flex;
+}
+
+.titulo-menu a {
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
 .menu {
   list-style-type: none;
   padding: 0;
@@ -38,7 +50,10 @@ a {
   text-decoration: none;
   color: #fff;
   width: 100%;
-  padding: 10px 10px 10px 30px;
+  padding: 10px 20px 10px 50px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu li a:hover {
