@@ -6,61 +6,12 @@ function entradas() {
                     <h4>Entradas</h4>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="">Almacen</label>
-                        <input class="form-control" name="almacen" id="almacen">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                    <div class="form-group mt-4">
-                        <button type="button" class="btn btn-primary btn-block" onclick="getAlmacen()"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="form-group">
-                        <label for="">Factura</label>
-                        <input type="text" class="form-control" name="factura">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                    <div class="form-group mt-4">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-folder"></i></button>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label for="">Iva</label>
-                        <select class="form-control" name="iva" id="iva"></select>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="form-group">
-                        <label for="">Proveedor</label>
-                        <input class="form-control" name="preoveedor" id="preoveedor">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                    <div class="form-group mt-4">
-                        <button type="button" class="btn btn-primary btn-block" onclick="getProveedor()"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label for="">Fecha</label>
-                        <input type="date" class="form-control" name="fecha">
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-12 table-responsive">
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <!-- <th>Clave</th> -->
+                                <th>Almacen</th>
                                 <th>Descripcion</th>
                                 <th>Familia/Marca</th>
                                 <th>Cantidad</th>
@@ -91,6 +42,7 @@ function entradas() {
             let entrada = (element.entradas).pop();
             document.getElementById('tb-entradas').innerHTML += `
                 <tr>
+                    <td>${element.almacen}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.familia}</td>
                     <td>${entrada.cantidad}</td>
@@ -190,28 +142,55 @@ let getProveedor = function () {
 let postExistencia = function(id){
     let form = existencias();
     let idProducto = id;
-    createModal();
-    document.querySelector('.modal-title').innerHTML = `Registrar existencias`;
-    document.querySelector('.modal-body').innerHTML = form;
-    document.querySelector('.cancelar').addEventListener('click', function () {
-        $('#modal').modal('hide');
-    });
+    let producto = fetch('inventario/producto/' + id);
 
-    document.getElementById('form-existencia').addEventListener('submit', function(e){
-        const formulario = this;
-        let obj = { idProducto };
+    producto.then(data => { 
+        return data.json();
+    }).then(res => {
+        let entradas = res.entradas;
+        let ultimaEntrada = entradas[entradas.length -1];
 
-        for (let i = 0; i < formulario.length; i++) {
-            const element = formulario[i];
-            if (element.required === true && element.value === '') {
-                return;
-            } else if (element.required === true) {
-                obj[element.name] = element.value;
+        createModal();
+
+        document.querySelector('.modal-title').innerHTML = `Registrar existencias`;
+        document.querySelector('.modal-body').innerHTML = form;
+
+        document.querySelector('input[name=stockActual]').value = ultimaEntrada.stockActual + ultimaEntrada.cantidad;
+        document.querySelector('input[name=stockMin]').value = ultimaEntrada.stockMin;
+        document.querySelector('input[name=stockMax').value = ultimaEntrada.stockMax;
+
+        document.querySelector('.cancelar').addEventListener('click', function () {
+            $('#modal').modal('hide');
+        });
+
+        document.getElementById('form-existencia').addEventListener('submit', function (e) {
+            const formulario = this;
+            let obj = {
+                idProducto
+            };
+
+            for (let i = 0; i < formulario.length; i++) {
+                const element = formulario[i];
+                if (element.required === true && element.value === '') {
+                    return;
+                } else if (element.required === true) {
+                    obj[element.name] = element.value;
+                }
             }
-        }
 
-        console.log(obj);
+            console.log(obj);
 
-        e.preventDefault();
+            fetch('/inventario/existencia', {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(data => {
+                alert(data);
+            });
+
+            e.preventDefault();
+        });
     });
 };

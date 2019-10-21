@@ -100,9 +100,116 @@ router.get('/producto', async function (req, res, next) {
     });
 });
 
+router.get('/producto/:id', async function (req, res, next) {
+    let producto = mongoose.model('producto');
+    await producto.findById(req.params.id, '', function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+router.post('/salida', async function (req, res, next) {
+    let producto = mongoose.model('producto');
+    let item = req.body;
+
+    producto.findOneAndUpdate({_id: item.idProducto}, {$push: { salidas: item }}, function (err, data) {
+        if (err) {
+            console.log(err);
+        }else {
+            res.send(data);
+        }
+    });
+
+    // await salida.create(req.body, function (err, data) {
+    //     if (err) {
+    //         res.send('error');
+    //     } else {
+    //         res.send(data);
+    //     }
+    // });
+});
+
+router.get('/salida', async function (req, res, next) {
+    let producto = mongoose.model('producto');
+    await producto.find({}, '', function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+router.get('/devoluciones', async function (req, res, next) {
+    let producto = mongoose.model('producto');
+    await producto.find({}, '', function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            let arrProductosSalidas = new Array();
+            data.forEach(item => {
+                let salida = item.salidas;
+                if (salida.length !== 0) {
+                    arrProductosSalidas.push(item);
+                }
+            });
+            res.send(arrProductosSalidas);
+        }
+    });
+});
+
+router.post('/prestamos', async function (req, res, next) {
+    let producto = mongoose.model('producto');
+    await producto.findById(req.body.idProducto, function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            let salidas = data.salidas;
+            let obj = {};
+            let suma = 0;
+
+            salidas.forEach(item => {
+                if (item.idEmpleado === req.body.idEmpleado) {
+                    suma += item.cantidad;
+                    obj.nombre = item.nombre;
+                    obj.producto = item.producto;
+                    obj.idEmpleado = item.idEmpleado;
+                    obj.idProducto = req.body.idProducto;
+                }
+            });
+            obj.suma = suma;
+            res.send(obj);
+        }
+    });
+});
+
+router.post('/devoluciones', function(req, res){
+    let producto = mongoose.model('producto');
+    let item = req.body;
+    producto.findOneAndUpdate({_id: item.idProducto}, {$push: { devoluciones: item }}, function (err, data) {
+        if (err) {
+            console.log(err);
+        }else {
+            console.log(data);
+        }
+    });
+});
+
+
 // Querys entradas
 router.post('/existencia', function(req,res){
-    console.log(req.body);
+    let producto = mongoose.model('producto');
+    let item = req.body;
+    producto.findOneAndUpdate({_id: item.idProducto}, {$push: { entradas: item }}, function (err, data) {
+        if (err) {
+            console.log(err);
+        }else {
+            console.log(data);
+        }
+    });
 });
 
 

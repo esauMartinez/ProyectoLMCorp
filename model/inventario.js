@@ -30,14 +30,33 @@ const productos = new Schema({
             fecha: Date,
             factura: String
         }
+    ],
+    salidas: [
+        {
+            nombre: String,
+            producto: String,
+            cantidad: Number,
+            fecha: String,
+            idEmpleado: String
+        }
+    ],
+    devoluciones: [
+        {
+            nombre: String,
+            producto: String,
+            cantidad: Number,
+            fecha: { type:  Date, default: new Date() },
+            idEmpleado: String
+        }
     ]
 });
 
-// const entradas = new Schema({
-//     stockActual: Number,
-//     stockMin: Number,
-//     stockMax: Number,
-//     producto: String
+// const salidas = new Schema({
+//     nombre: String,
+//     idProducto: String,
+//     producto: String,
+//     cantidad: Number,
+//     fecha: String
 // });
 
 const medidas = new Schema({
@@ -53,6 +72,7 @@ mongoose.model('producto', productos);
 // mongoose.model('entrada', entradas);
 mongoose.model('medida', medidas);
 mongoose.model('familia', familias);
+// mongoose.model('salida', salidas);
 
 mongoose.connect("mongodb://esau:mace930111@ds229078.mlab.com:29078/db_mina", {
     useNewUrlParser: true,

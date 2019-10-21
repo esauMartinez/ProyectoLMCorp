@@ -28,8 +28,11 @@ function existencias() {
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <label for="">Iva</label>
-                            <input type="number" class="form-control" name="iva" required>
+                            <label for="">IVA</label>
+                            <select name="iva" class="form-control" required>
+                                <option value="0">0</option>
+                                <option value="16">16</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -59,13 +62,16 @@ function existencias() {
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Factura</label>
-                            <input type="number" class="form-control" name="factura" required>
+                            <input type="text" class="form-control" name="factura" required>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Moneda</label>
-                            <input type="text" class="form-control" name="moneda" required>
+                            <select name="moneda" class="form-control" required>
+                                <option value="mxn">mxn</option>
+                                <option value="usd">usd</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-6">

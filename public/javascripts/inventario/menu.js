@@ -83,12 +83,29 @@ function menu(){
                 <div class="col-lg-6">
                     <div class="card mt-3" style="width: 100%;">
                         <div class="mt-3 d-flex justify-content-center align-itemns-center">
-                            <i class="fa fa-sign-out-alt" style="font-size: 64px;"></i>
+                            <i class="fa fa-arrow-right" style="font-size: 64px;"></i>
                         </div>
                         <div class="card-body">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-lg-6">                                    
-                                    <a href="#" class="btn btn-primary btn-block" id="btn-existencias">Salidas</a>
+                                    <a href="#" class="btn btn-primary btn-block" id="btn-salidas">Salidas</a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="#" class="btn btn-warning btn-block" id="btn-ver-salidas">Ver salidas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mt-3" style="width: 100%;">
+                        <div class="mt-3 d-flex justify-content-center align-itemns-center">
+                            <i class="fa fa-arrow-left" style="font-size: 64px;"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-lg-6">
+                                    <a href="#" class="btn btn-primary btn-block" id="btn-devoluciones">Devoluciones</a>
                                 </div>
                             </div>
                         </div>
@@ -116,6 +133,18 @@ function menu(){
 
     document.getElementById('btn-entradas').addEventListener('click', function () {
         entradas();
+    });
+
+    document.getElementById('btn-salidas').addEventListener('click', function () {
+        salidas();
+    });
+
+    document.getElementById('btn-ver-salidas').addEventListener('click', function () {
+        tabla_salidas();
+    });
+
+    document.getElementById('btn-devoluciones').addEventListener('click', function () {
+        tabla_devoluciones();
     });
 
     document.getElementById('btn-inventario').style.background = 'rgb(43, 43, 43)';

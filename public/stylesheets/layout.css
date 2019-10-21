@@ -1,83 +1,83 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-left: 350px;
-  transition: 1s;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding-left: 350px;
+	transition: 1s;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
 }
 
 .navbar-left {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 350px;
-  background: rgba(80, 80, 80, 0.582);
-  transition: 1s width;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 350px;
+	background: rgba(80, 80, 80, 0.582);
+	transition: 1s width;
 }
 
 @media (max-width: 800px) {
-  .navbar-left {
-    display: none;
-  }
+	.navbar-left {
+		display: none;
+	}
 }
 
 .titulo-menu {
-  display: flex;
+	display: flex;
 }
 
 .titulo-menu a {
-  width: 100%;
-  padding: 10px 10px 10px 30px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
+	width: 100%;
+	padding: 10px 10px 10px 30px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
 }
 
 .menu {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 .menu li {
-  display: flex;
+	display: flex;
 }
 
 .menu li a {
-  text-decoration: none;
-  color: #fff;
-  width: 100%;
-  padding: 10px 20px 10px 50px;
-  font-size: 16px;
-  display: flex;
-  justify-content: space-between;
+	text-decoration: none;
+	color: #fff;
+	width: 100%;
+	padding: 10px 20px 10px 50px;
+	font-size: 16px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .menu li a:hover {
-  background: rgb(43, 43, 43);
+	background: rgb(43, 43, 43);
 }
 
 .card-btns {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .active {
-  background: rgb(43, 43, 43);
+	background: rgb(43, 43, 43);
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .btn-ver-menu {
-  padding: 10px;
-  font-size: 24px;
-  border: 0;
-  background: none;
-  color: #fff;
+	padding: 10px;
+	font-size: 24px;
+	border: 0;
+	background: none;
+	color: #fff;
 }

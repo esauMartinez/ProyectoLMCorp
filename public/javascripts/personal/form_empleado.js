@@ -169,7 +169,7 @@ let formulario = function(){
 				</div>
 				<div class="col-lg-4">
 					<div class="form-group">
-						<label for="">Poblacion</label>
+						<label for="">Localidad</label>
 						<input type="text" class="form-control" name="poblacion" required>
 					</div>
 				</div>
