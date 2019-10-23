@@ -26,11 +26,11 @@ let formulario = function(){
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="">Rfc</label>
+						<label for="">RFC</label>
 						<input type="text" class="form-control" name="rfc" required>
 					</div>
 					<div class="form-group">
-						<label for="">Curp</label>
+						<label for="">CURP</label>
 						<input type="text" class="form-control" name="curp" required>
 					</div>
 					<div class="form-group">
@@ -38,7 +38,7 @@ let formulario = function(){
 						<input type="date" class="form-control" name="fecha_nac" required>
 					</div>
 					<div class="form-group">
-						<label for="">Nss</label>
+						<label for="">NSS</label>
 						<input type="text" class="form-control" name="nss" required>
 					</div>
 					<div class="form-group">
@@ -116,7 +116,7 @@ let formulario = function(){
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="form-group">
-						<label for="">Cp</label>
+						<label for="">CP</label>
 						<input type="text" class="form-control" name="cp_dir" required>
 					</div>
 				</div>
