@@ -21,7 +21,7 @@ let tablaProvedos = function(){
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-3 offset-lg-9">
+			<div class="col-lg-3 offset-lg-9 mt-3">
 				<button type="button" class="btn btn-danger btn-block" id="btn-regresar" onclick="regresar()">Regresar</button>
 			</div>	
 		</div>
