@@ -21,7 +21,7 @@ async function listado_almacen() {
                         <tbody id="tb-almacen"></tbody>
                     </table>
                 </div>
-                <div class="col-lg-3 offset-lg-9">
+                <div class="col-lg-3 offset-lg-9 mt-3">
                     <button type="button" class="btn btn-danger btn-block cancelar">Regresar</button>
                 </div>
             </div>
@@ -60,6 +60,8 @@ async function listado_almacen() {
                 </tr>
             `;
         };
+        descargarExcel();
+        format_table();
     });
 };
 

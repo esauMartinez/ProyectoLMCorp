@@ -161,6 +161,7 @@ router.get('/devoluciones', async function (req, res, next) {
     });
 });
 
+
 router.post('/prestamos', async function (req, res, next) {
     let producto = mongoose.model('producto');
     await producto.findById(req.body.idProducto, function (err, data) {

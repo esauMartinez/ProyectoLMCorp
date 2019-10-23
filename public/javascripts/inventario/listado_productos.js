@@ -24,7 +24,7 @@ function listado_productos() {
                         <tbody id="tb-productos"></tbody>
                     </table>
                 </div>
-                <div class="col-lg-3 offset-lg-9">
+                <div class="col-lg-3 offset-lg-9 mt-3">
                     <button type="button" class="btn btn-danger btn-block cancelar">Regresar</button>
                 </div>
             </div>
@@ -66,7 +66,8 @@ function listado_productos() {
                 </tr>
             `;
         });
-        // $('#tabla-productos').DataTable();
+        descargarExcel();
+        format_table();
     });
 
     document.querySelector('.cancelar').addEventListener('click', function () {

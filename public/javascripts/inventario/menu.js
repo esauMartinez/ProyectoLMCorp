@@ -107,6 +107,9 @@ function menu(){
                                 <div class="col-lg-6">
                                     <a href="#" class="btn btn-primary btn-block" id="btn-devoluciones">Devoluciones</a>
                                 </div>
+                                <div class="col-lg-6">
+                                    <a href="#" class="btn btn-warning btn-block" id="btn-tabla-devoluciones">Ver devoluciones</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,8 +147,13 @@ function menu(){
     });
 
     document.getElementById('btn-devoluciones').addEventListener('click', function () {
+        devoluciones();
+    });
+
+    document.getElementById('btn-tabla-devoluciones').addEventListener('click', function () {
         tabla_devoluciones();
     });
+    
 
     document.getElementById('btn-inventario').style.background = 'rgb(43, 43, 43)';
 };

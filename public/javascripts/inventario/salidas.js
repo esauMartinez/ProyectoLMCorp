@@ -13,8 +13,17 @@ let salidas = function(){
 				</thead>
 				<tbody id="tb-empleados"></tbody>
 			</table>
+			<div class="row">
+				<div class="col-lg-3 offset-lg-9 mt-3">
+					<button type="button" class="btn btn-danger btn-block cancelar">Regresar</button>
+				</div>
+			</div>
 		</div>
 	`;
+
+	document.querySelector('.cancelar').addEventListener('click', function () {
+		menu();
+	});
 
 	let response = fetch('personal/empleado');
 	response.then(res => {
@@ -31,7 +40,7 @@ let salidas = function(){
 				</tr>
 			`;
 		});
-		$('#table-empleados').DataTable();
+		format_table();
 	});
 };
 

@@ -34,8 +34,8 @@ router.post('/login', function (req, res, next) {
 		});
 	} else {
 		mongoose.model("usuario").findOne({
-			"username": 'esau',
-			"password": 'esau'
+			"username": username,
+			"password": password
 		}, function (err, data) {
 			if (data === null) {
 				res.render('index', {

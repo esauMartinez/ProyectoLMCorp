@@ -26,7 +26,7 @@ function entradas() {
                         <tbody id="tb-entradas"></tbody>
                     </table>
                 </div>
-                <div class="col-lg-3 offset-lg-9">
+                <div class="col-lg-3 offset-lg-9 mt-3">
                     <button type="button" class="btn btn-danger btn-block cancelar">Regresar</button>
                 </div>
             </div>
@@ -57,6 +57,8 @@ function entradas() {
                 </tr>
             `;
         });
+        descargarExcel();
+        format_table();
 	});
 
 	document.querySelector('.cancelar').addEventListener('click', function () {
@@ -177,8 +179,6 @@ let postExistencia = function(id){
                     obj[element.name] = element.value;
                 }
             }
-
-            console.log(obj);
 
             fetch('/inventario/existencia', {
                 method: 'POST',
