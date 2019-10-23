@@ -146,13 +146,12 @@ let verEmpleado = function(id){
 					}
 				}
 			}
-
-			document.querySelector('.btn-deshabilitar').disabled = true;
-
-			document.querySelector('.btn-danger').addEventListener('click', function (e) {
-				insertar_tabla();
-			});
 		}
+		document.querySelector('.btn-deshabilitar').disabled = true;
+
+		document.querySelector('.btn-danger').addEventListener('click', function (e) {
+			insertar_tabla();
+		});
 	});
 };
 

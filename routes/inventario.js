@@ -69,6 +69,7 @@ router.post('/producto', async function(req, res, next){
                     cantidad: 0,
                     costo_unidad: 0,
                     costo_total: 0,
+                    costo_total_iva: 0,
                     iva: 0,
                     moneda: 'Mxn',
                     stockActual: 0,

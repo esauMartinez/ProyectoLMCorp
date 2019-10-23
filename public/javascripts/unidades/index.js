@@ -96,6 +96,14 @@ let tabla = function(){
 			}
 		}
 
+		let btn_eli = document.getElementsByClassName('eli-unidad');
+		for (let i = 0; i < btn_eli.length; i++) {
+			const element = btn_eli[i];
+			element.onclick = function () {
+				eliUnidad(element.id);
+			}
+		}
+
 		let regresar = document.getElementById('regresar-menu');
 		regresar.onclick = function () {
 			insertar_menu();
@@ -106,22 +114,140 @@ let tabla = function(){
 let verUnidad = function (id) {
 	let data = unidad.getUnidad(id);
 	data.then(res => {
-		console.log(res);
-		createModal();
+		let form = formulario();
+		document.querySelector('#jumbotron-unidad').innerHTML = `
+			<div class="row">
+				<div class="col-lg-12 mt-3">
+					<h4>Datos unidad</h4>
+				</div>
+				<div class="col-lg-12">
+					<div class="card mt-2 p-3" style="width: 100%;">	
+						${form}
+					</div>
+				</div>
+			</div>
+		`;
+		return res;
+	}).then(data => {
+		const formulario = document.getElementById('form-unidad');
+		for (let i = 0; i < formulario.length; i++) {
+			const element = formulario[i];
+			for (var j in data) {
+				if (j === element.name) {
+					switch (element.type) {
+						case 'text':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'date':
+							let f = data[j].split('T')[0];
+							document.querySelector(`input[name=${j}]`).value = f;
+							break;
+						case 'number':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'select-one':
+							document.querySelector(`select[name=${j}]`).value = data[j];
+							break;
+						case 'color':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'file':
+							document.querySelector(`input[name=${j}]`).value = '';
+							break;
+						default:
+							document.querySelector(`textarea`).value = data[j];
+							break;
+					}
+				}
+			}
+		}
+
+		document.getElementById('btn-guardar').disabled = true;
+
+		document.querySelector('.btn-danger').addEventListener('click', function (e) {
+			tabla();
+		});
 	});
 };
 
 let modUnidad = function (id) {
 	let data = unidad.getUnidad(id);
 	data.then(res => {
-		console.log(res);
-		insertar_form();
+		let form = formulario();
+		document.querySelector('#jumbotron-unidad').innerHTML = `
+			<div class="row">
+				<div class="col-lg-12 mt-3">
+					<h4>Datos unidad</h4>
+				</div>
+				<div class="col-lg-12">
+					<div class="card mt-2 p-3" style="width: 100%;">	
+						${form}
+					</div>
+				</div>
+			</div>
+		`;
+		return res;
+	}).then(data => {
+		const formulario = document.getElementById('form-unidad');
+		for (let i = 0; i < formulario.length; i++) {
+			const element = formulario[i];
+			for (var j in data) {
+				if (j === element.name) {
+					switch (element.type) {
+						case 'text':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'date':
+							let f = data[j].split('T')[0];
+							document.querySelector(`input[name=${j}]`).value = f;
+							break;
+						case 'number':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'select-one':
+							document.querySelector(`select[name=${j}]`).value = data[j];
+							break;
+						case 'color':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'file':
+							document.querySelector(`input[name=${j}]`).value = '';
+							break;
+						default:
+							document.querySelector(`textarea`).value = data[j];
+							break;
+					}
+				}
+			}
+		}
+
+		let id = data._id;
+
+		document.getElementById('form-unidad').addEventListener('submit', function (e) {
+			let datos = validar();
+			datos.append('id', id);
+
+			let mod = unidad.putUnidad(datos);
+			mod.then(() => {
+				document.querySelector('.div-msj').innerHTML = `
+					<div class="alert alert-success" role="alert">
+						Unidad modificada
+					</div>
+				`;
+			});
+
+			e.preventDefault();
+		});
+
+		document.querySelector('.btn-danger').addEventListener('click', function (e) {
+			tabla();
+		});
 	});
 };
 
 let eliUnidad= function (id) {
-	let data = empleado.deleteEmpleado(id);
+	let data = unidad.deleteUnidad(id);
 	data.then(() => {
-		insertar_tabla();
+		tabla();
 	});
 };

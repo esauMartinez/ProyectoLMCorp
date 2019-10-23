@@ -33,7 +33,7 @@ router.post('/unidad', async (req, res) => {
 		} else {
 			let unidad = mongoose.model('unidad');
 			let obj = {
-				economico: req.body.num_economico,
+				economico: req.body.economico,
 				tipo: req.body.tipo,
 				condicion: req.body.condicion,
 				placas: req.body.placas,
@@ -44,7 +44,7 @@ router.post('/unidad', async (req, res) => {
 				adquisicion: req.body.adquisicion,
 				km_inicial: req.body.km_inicial,
 				poliza_seguro: req.files.poliza[0].filename,
-				vencimiento: req.body.ven_poliza,
+				vencimiento: req.body.vencimiento,
 				fecha_adquisicion: req.body.fecha_adquisicion,
 				foto: req.files.foto[0].filename
 			}
@@ -79,6 +79,55 @@ router.get('/unidad/:id', async function (req, res, next) {
 			res.send('error');
 		} else {
 			res.send(data);
+		}
+	});
+});
+
+router.delete('/unidad/:id', async function (req, res, next) {
+	let unidad = mongoose.model('unidad');
+	let id = req.params.id;
+	await unidad.findByIdAndDelete(id, function (err, data) {
+		if (err) {
+			res.send('error');
+		} else {
+			res.send(data);
+		}
+	});
+});
+
+router.put('/unidad', async function (req, res, next) {
+	await upload(req, res, (err) => {
+		if (err) {
+			res.send(err)
+		} else {
+			let unidad = mongoose.model('unidad');
+			let obj = {
+				id: req.body.id,
+				economico: req.body.economico,
+				tipo: req.body.tipo,
+				condicion: req.body.condicion,
+				placas: req.body.placas,
+				marca: req.body.marca,
+				modelo: req.body.modelo,
+				color: req.body.color,
+				combustible: req.body.combustible,
+				adquisicion: req.body.adquisicion,
+				km_inicial: req.body.km_inicial,
+				poliza_seguro: req.files.poliza[0].filename,
+				vencimiento: req.body.vencimiento,
+				fecha_adquisicion: req.body.fecha_adquisicion,
+				foto: req.files.foto[0].filename
+			}
+
+			unidad.findByIdAndUpdate(obj.id, obj, function (err, data) {
+				if (err) {
+					res.send('error');
+				} else {
+					res.send({
+						msj: 'ok'
+					});
+				}
+			});
 		}
 	});
 });

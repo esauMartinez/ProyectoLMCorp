@@ -93,9 +93,8 @@ let modProvee = function(id){
 							document.querySelector(`input[name=${j}]`).value = data[j];
 							break;
 						case 'date':
-							let f = data[j].split('T')[0].replace(/-/g, '/');
-							console.log(f);
-							// document.querySelector(`#fecha_ing`).value = f;
+							let f = data[j].split('T')[0];
+							document.querySelector(`input[name=${j}]`).value = f;
 							break;
 						case 'number':
 							document.querySelector(`input[name=${j}]`).value = data[j];

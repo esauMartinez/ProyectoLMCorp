@@ -11,7 +11,7 @@ const unidades = new Schema({
 	modelo: String,
 	color: String,
 	combustible: String,
-	adqusicion: String,
+	adquisicion: String,
 	km_inicial: Number,
 	poliza_seguro: String,
 	vencimiento: String,
