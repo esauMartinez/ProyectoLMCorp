@@ -81,7 +81,7 @@ let verProvee = function(id){
 
 let modProvee = function(id){
 	formProveedor();
-	 const formulario = document.getElementById('form-proveedor');
+	const formulario = document.getElementById('form-proveedor');
 	traerProveedor(id).then(data => {
 		for (let i = 0; i < formulario.length; i++) {
 			const element = formulario[i];

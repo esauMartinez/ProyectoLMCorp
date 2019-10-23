@@ -14,7 +14,7 @@ let menu = function(){
 					<div class="card-body">
 						<div class="row d-flex justify-content-center">
 							<div class="col-lg-6">
-								<a href="#" class="btn btn-primary btn-block" id="btn-nuevo-empleado">Alta empleado</a>
+								<a href="#" class="btn btn-primary btn-block" id="btn-ver-empleados">Lista empleados</a>
 							</div>
 						</div>
 					</div>
@@ -28,7 +28,7 @@ let menu = function(){
 					<div class="card-body">
 						<div class="row d-flex justify-content-center">
 							<div class="col-lg-6">
-								<a href="#" class="btn btn-primary btn-block" id="btn-ver-empleados">Empleados</a>
+								<a href="#" class="btn btn-primary btn-block" id="btn-nuevo-empleado">Alta empleado</a>
 							</div>
 						</div>
 					</div>

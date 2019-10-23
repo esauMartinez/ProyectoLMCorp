@@ -16,6 +16,19 @@ router.post('/empleado', async function (req, res, next) {
 	});
 });
 
+router.put('/empleado', async function (req, res, next) {
+	let empleado = mongoose.model('empleado');
+	let data = req.body;
+
+	empleado.findByIdAndUpdate(data.id, data, function (err, data) {
+        if (err) {
+            console.log(err);
+        }else {
+            res.send(data);
+        }
+    });
+});
+
 router.get('/empleado', async function (req, res, next) {
 	let empleado = mongoose.model('empleado');
 	await empleado.find({}, function (err, data) {

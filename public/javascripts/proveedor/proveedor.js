@@ -303,6 +303,7 @@ let crearTipoProvee = function(){
             </div>
         </form>
     `;
+    
     document.getElementById('form-tipo-proveedor').addEventListener('submit', function (e) {
         const formulario = this;
         let obj = {};

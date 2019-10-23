@@ -34,9 +34,17 @@ let insertar_form = function () {
 			</div>
 		</div>
 	`;
+
 	document.getElementById('form-empleado').addEventListener('submit', function (e) {
 		let datos = postEmpleado();
-		empleado.postEmpleado(datos);
+		let crear = empleado.postEmpleado(datos);
+		crear.then(() => {
+			document.querySelector('.div-msj').innerHTML = `
+				<div class="alert alert-success" role="alert">
+					Empleado creado
+				</div>
+			`;
+		});
 		e.preventDefault();
 	});
 
@@ -95,16 +103,128 @@ let insertar_tabla = function () {
 let verEmpleado = function(id){
 	let data = empleado.getEmpleado(id);
 	data.then(res => {
-		console.log(res);
-		createModal();
+		let formulario_empleado = formulario();
+		document.querySelector('#jumbotron-personal').innerHTML = `
+			<div class="row">
+				<div class="col-lg-12 mt-3">
+					<h4>Datos empleado</h4>
+				</div>
+				<div class="col-lg-12">
+					<div class="card mt-2 p-3" style="width: 100%;">	
+						${formulario_empleado}
+					</div>
+				</div>
+			</div>
+		`;
+		return res;
+	}).then(data => {
+		const formulario = document.getElementById('form-empleado');
+		for (let i = 0; i < formulario.length; i++) {
+			const element = formulario[i];
+			for (var j in data) {
+				if (j === element.name) {
+					switch (element.type) {
+						case 'text':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'date':
+							let f = data[j].split('T')[0];
+							document.querySelector(`input[name=${j}]`).value = f;
+							break;
+						case 'number':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'select-one':
+							document.querySelector(`select[name=${j}]`).value = data[j];
+							break;
+						case 'email':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						default:
+							document.querySelector(`textarea`).value = data[j];
+							break;
+					}
+				}
+			}
+
+			document.querySelector('.btn-deshabilitar').disabled = true;
+
+			document.querySelector('.btn-danger').addEventListener('click', function (e) {
+				insertar_tabla();
+			});
+		}
 	});
 };
 
 let modEmpleado = function (id) {
 	let data = empleado.getEmpleado(id);
-	data.then(res => {
-		console.log(res);
-		insertar_form();
+	data.then(data => {
+		let formulario_empleado = formulario();
+		document.querySelector('#jumbotron-personal').innerHTML = `
+			<div class="row">
+				<div class="col-lg-12 mt-3">
+					<h4>Datos empleado</h4>
+				</div>
+				<div class="col-lg-12">
+					<div class="card mt-2 p-3" style="width: 100%;">	
+						${formulario_empleado}
+					</div>
+				</div>
+			</div>
+		`;
+		return data;
+	}).then(data => {
+		const formulario = document.getElementById('form-empleado');
+		for (let i = 0; i < formulario.length; i++) {
+			const element = formulario[i];
+			for (var j in data) {
+				if (j === element.name) {
+					switch (element.type) {
+						case 'text':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'date':
+							let f = data[j].split('T')[0];
+							document.querySelector(`input[name=${j}]`).value = f;
+							break;
+						case 'number':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						case 'select-one':
+							document.querySelector(`select[name=${j}]`).value = data[j];
+							break;
+						case 'email':
+							document.querySelector(`input[name=${j}]`).value = data[j];
+							break;
+						default:
+							document.querySelector(`textarea`).value = data[j];
+							break;
+					}
+				}
+			}
+		}
+
+		let id = data._id;
+
+		document.getElementById('form-empleado').addEventListener('submit', function (e) {
+			let datos = postEmpleado();
+			datos.id = id;
+
+			let mod = empleado.putEmpleado(datos);
+			mod.then(() => {
+				document.querySelector('.div-msj').innerHTML = `
+					<div class="alert alert-success" role="alert">
+						Empleado modificado
+					</div>
+				`;
+			});
+
+			e.preventDefault();
+		});
+
+		document.querySelector('.btn-danger').addEventListener('click', function (e) {
+			insertar_tabla();
+		});
 	});
 };
 

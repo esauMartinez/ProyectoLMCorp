@@ -11,7 +11,19 @@ class Empleado {
 				'Content-Type': 'application/json'
 			}
 		}).then(data => {
-			console.log(data);
+			return;
+		});
+	}
+
+	async putEmpleado(data) {
+		fetch(this.url  , {
+			method: 'PUT',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(data => {
+			return;
 		});
 	}
 	
@@ -37,8 +49,6 @@ class Empleado {
 			return data.json();
 		});
 	}
-
-	async putEmpleado(){}
 
 	async deleteEmpleado(id){
 		await fetch(this.url + '/' + id, { method: 'DELETE' });

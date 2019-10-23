@@ -174,12 +174,13 @@ let formulario = function(){
 					</div>
 				</div>
 			</div>
+			<div class="div-msj"></div>
 			<div class="row mt-2">
 				<div class="col-lg-2 offset-lg-2"><button type="button" class="btn btn-warning btn-block">Imprimir</button></div>
 				<div class="col-lg-2"><button type="button" class="btn btn-dark btn-block">Datos familiares</button></div>
 				<div class="col-lg-2"><button type="button" class="btn btn-success btn-block">Documentacion</button></div>
 				<div class="col-lg-2"><button type="button" class="btn btn-danger btn-block">Cancelar</button></div>
-				<div class="col-lg-2"><button type="submit" class="btn btn-primary btn-block">Guardar</button></div>
+				<div class="col-lg-2"><button type="submit" class="btn btn-primary btn-block btn-deshabilitar">Guardar</button></div>
 			</div>
 		</form>
 	`;	
