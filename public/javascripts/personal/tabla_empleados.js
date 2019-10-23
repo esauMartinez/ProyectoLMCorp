@@ -66,6 +66,8 @@ let tabla_empleados = function(data){
 			`;
 		}
 	});
+	descargarExcel();
+	format_table();
 };
 
 module.exports = tabla_empleados;
