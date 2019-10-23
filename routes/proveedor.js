@@ -30,6 +30,7 @@ router.post('/proveedor', async function (req, res, next) {
     let data = req.body;
     await proveedor.create(data, function (err, data) {
         if (err) {
+            console.log(err);
             res.send('error');
         } else {
             res.send('ok');

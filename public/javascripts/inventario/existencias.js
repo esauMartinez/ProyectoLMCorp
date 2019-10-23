@@ -3,36 +3,44 @@ function existencias() {
         <div class="jumbotron">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4>Existencias</h4>
+                    <h4>Entradas</h4>
                 </div>
             </div>
             <form class="mt-3" action="#" id="form-existencia">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Cantidad</label>
                             <input type="number" class="form-control" name="cantidad" required>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Costo unidad</label>
                             <input type="number" class="form-control" name="costo_unidad" required>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Costo total</label>
-                            <input type="number" class="form-control" name="costo_total" required>
+                            <input type="number" class="form-control" name="costo_total" required disabled>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">IVA</label>
                             <select name="iva" class="form-control" required>
                                 <option value="0">0</option>
-                                <option value="16">16</option>
+                                <option value=".08">8</option>
+                                <option value=".12">12</option>
+                                <option value=".16">16</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="">Costo total con IVA</label>
+                            <input type="number" class="form-control" name="costo_total_iva" required disabled>
                         </div>
                     </div>
                     <div class="col-lg-4">

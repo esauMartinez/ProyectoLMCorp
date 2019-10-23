@@ -9,7 +9,7 @@ const proveedores = new Schema({
     contacto: String,
     razon_social: String,
     fecha_ing: Date,
-    rfc: Number,
+    rfc: String,
     correo: String,
     tipo_proveedor: String,
     pag_web: String,

@@ -22,6 +22,7 @@ const productos = new Schema({
             cantidad: Number,
             costo_unidad: Number,
             costo_total: Number,
+            costo_total_iva: Number,
             iva: Number,
             moneda: String,
             stockActual: Number,

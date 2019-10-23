@@ -52,6 +52,8 @@ let tabla_unidades = function (data) {
 			<input type="color" value="${element.color}">
 		`;
 	});
+	descargarExcel();
+	format_table();
 };
 
 module.exports = tabla_unidades;

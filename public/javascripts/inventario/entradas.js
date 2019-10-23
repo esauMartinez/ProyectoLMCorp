@@ -14,6 +14,7 @@ function entradas() {
                                 <th>Almacen</th>
                                 <th>Descripcion</th>
                                 <th>Familia/Marca</th>
+                                <th>Proveedor</th>
                                 <th>Cantidad</th>
                                 <th>Medida</th>
                                 <th>Moneda</th>
@@ -38,6 +39,7 @@ function entradas() {
 		let data = res.json();
 		return data;
 	}).then(res => {
+        console.log(res);
         res.forEach(element => {
             let entrada = (element.entradas).pop();
             document.getElementById('tb-entradas').innerHTML += `
@@ -45,6 +47,7 @@ function entradas() {
                     <td>${element.almacen}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.familia}</td>
+                    <td>${element.proveedor}</td>
                     <td>${entrada.cantidad}</td>
                     <td>${element.medida}</td>
                     <td>${entrada.moneda}</td>
@@ -154,7 +157,7 @@ let postExistencia = function(id){
 
         createModal();
 
-        document.querySelector('.modal-title').innerHTML = `Registrar existencias`;
+        document.querySelector('.modal-title').innerHTML = `Registrar entradas`;
         document.querySelector('.modal-body').innerHTML = form;
 
         document.querySelector('input[name=stockActual]').value = ultimaEntrada.stockActual + ultimaEntrada.cantidad;
@@ -163,6 +166,33 @@ let postExistencia = function(id){
 
         document.querySelector('.cancelar').addEventListener('click', function () {
             $('#modal').modal('hide');
+        });
+
+        document.querySelector('input[name=cantidad]').addEventListener('keyup', function(){
+            let cantidad = this.value;
+            let costo = document.querySelector('input[name=costo_unidad]').value;
+
+            let total = cantidad * costo;
+            document.querySelector('input[name=costo_total]').value = total;
+        });
+        
+        document.querySelector('input[name=costo_unidad]').addEventListener('keyup', function () {
+            let costo = this.value;
+            let cantidad = document.querySelector('input[name=cantidad]').value;
+
+            let total = cantidad * costo;
+            document.querySelector('input[name=costo_total]').value = total;
+        });
+
+        document.querySelector('select[name=iva]').addEventListener('change', function(){
+            let iva = this.value;
+            let total = document.querySelector('input[name=costo_total]').value;
+
+            let calculo = total * iva;
+            
+            total_iva = parseFloat(total) + parseFloat(calculo);
+
+            document.querySelector('input[name=costo_total_iva]').value = total_iva;
         });
 
         document.getElementById('form-existencia').addEventListener('submit', function (e) {

@@ -53,7 +53,9 @@ let tablaProvedos = function(){
 					</td>
                 </tr>
             `;
-        });
+		});
+		descargarExcel();
+		format_table();
     });
 };
 

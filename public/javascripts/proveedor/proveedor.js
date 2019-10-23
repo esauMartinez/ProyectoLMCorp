@@ -45,8 +45,8 @@ let formProveedor = function(){
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Rfc</label>
-                                        <input type="number" class="form-control" name="rfc" required>
+                                        <label for="">RFC</label>
+                                        <input type="text" class="form-control" name="rfc" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -96,7 +96,7 @@ let formProveedor = function(){
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Cp</label>
+                                        <label for="">CP</label>
                                         <input type="number" class="form-control" name="cp" required>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ let formProveedor = function(){
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Delegacion</label>
+                                        <label for="">Localidad</label>
                                         <input type="text" class="form-control" name="delegacion" required>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@ let formProveedor = function(){
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Iva</label>
+                                        <label for="">IVA</label>
                                         <input type="number" class="form-control" name="iva" required>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ let formProveedor = function(){
                     <button type="button" class="btn btn-danger btn-block" id="btn-regresar" onclick="regresar()">Cancelar</button>
                 </div>
                 <div class="col-lg-3">
-                    <button type="submit" class="btn btn-primary btn-block" id="btn-guardar">Aceptar</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="btn-guardar" onclick="crearProveedor()">Aceptar</button>
                 </div>
             </div>
         </form>
@@ -262,7 +262,7 @@ let crearProveedor = function(){
         formulario.reset();
         document.querySelector('.msj-registro').innerHTML = `
             <div class="alert alert-success" role="alert">
-                Almacen registrado exitosamente
+                Porveedor registrado exitosamente
             </div>
         `;
     });
