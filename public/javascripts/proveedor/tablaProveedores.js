@@ -87,7 +87,6 @@ let modProvee = function(id){
 			const element = formulario[i];
 			for (var j in data) {
 				if (j === element.name) {
-					// console.log(j + ' ' + data[j]);
 					switch(element.type){
 						case 'text':
 							document.querySelector(`input[name=${j}]`).value = data[j];
@@ -115,15 +114,17 @@ let modProvee = function(id){
 		tablaProvedos();
 	});
 
-	document.querySelector('#btn-guardar').addEventListener('click', function () {
-		modificarProveedor();
-	});
+	document.querySelector('#btn-guardar').type = 'button';
+
+	document.querySelector('#btn-guardar').onclick = function( ){
+		modificarProveedor(id);
+	};
 };
 
-let modificarProveedor = function () {
-	alert('modificar');
+let modificarProveedor = function (id) {
 	const formulario = document.getElementById('form-proveedor');
 	let obj = {};
+	obj.id = id;
 
 	for (let i = 0; i < formulario.length; i++) {
 		const element = formulario[i];
@@ -134,20 +135,26 @@ let modificarProveedor = function () {
 		}
 	}
 
-	console.log(obj);
+	fetch('/proveedor/proveedor', {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(obj)
+	}).then(data => {
+		formulario.reset();
+		document.querySelector('.msj-registro').innerHTML = `
+			<div class="alert alert-success" role="alert">
+				Almacen registrado exitosamente
+			</div>
+		`;
+	});
+};
 
-	// fetch('/proveedor/proveedor', {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json'
-	// 	},
-	// 	body: JSON.stringify(obj)
-	// }).then(data => {
-	// 	formulario.reset();
-	// 	document.querySelector('.msj-registro').innerHTML = `
-    //             <div class="alert alert-success" role="alert">
-    //                 Almacen registrado exitosamente
-    //             </div>
-    //         `;
-	// });
+let eliProvee = async function(id){
+	await fetch('proveedor/proveedor' + '/' + id, {
+		method: 'DELETE'
+	}).then(() => {
+		tablaProvedos();
+	});
 };

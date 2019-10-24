@@ -38,6 +38,30 @@ router.post('/proveedor', async function (req, res, next) {
     });
 });
 
+router.put('/proveedor', async function (req, res, next) {
+    let proveedor = mongoose.model('proveedor');
+    let data = req.body;
+    await proveedor.findByIdAndUpdate(data.id, data, function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            res.send('ok');
+        }
+    });
+});
+
+router.delete('/proveedor/:id', async function (req, res, next) {
+    let proveedor = mongoose.model('proveedor');
+    let data = req.params.id;
+    await proveedor.findByIdAndDelete(data, function (err, data) {
+        if (err) {
+            res.send('error');
+        } else {
+            res.send('ok');
+        }
+    });
+});
+
 router.post('/tipoProveedor', function(req, res){
     let proveedor = mongoose.model('tipoProveedor');
     let data = req.body;
