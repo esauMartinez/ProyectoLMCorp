@@ -76,6 +76,9 @@ function menu(){
                                 <div class="col-lg-6">
                                     <a href="#" class="btn btn-primary btn-block" id="btn-entradas">Entradas</a>
                                 </div>
+                                <div class="col-lg-6">
+                                    <a href="#" class="btn btn-warning btn-block" id="btn-lista-entradas">Lista de Entradas</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,6 +155,10 @@ function menu(){
 
     document.getElementById('btn-tabla-devoluciones').addEventListener('click', function () {
         tabla_devoluciones();
+    });
+
+    document.getElementById('btn-lista-entradas').addEventListener('click', function () {
+        tabla_entradas();
     });
     
 

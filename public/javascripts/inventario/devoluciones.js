@@ -154,11 +154,13 @@ let gernerarDevolucion = function(id){
 					'Content-Type': 'application/json'
 				}
 			}).then(res => {
-				document.querySelector('.msj-registro').innerHTML = `
+				document.querySelector('.div-msj').innerHTML = `
 					<div class="alert alert-success" role="alert">
 						Salida registrada
 					</div>
 				`;
+
+				document.getElementById('form-devolver').reset();
 			});
 
 			e.preventDefault(e);

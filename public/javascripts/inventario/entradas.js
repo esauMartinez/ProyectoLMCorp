@@ -56,13 +56,16 @@ function entradas() {
             // let total = (sumaActual + sumDevoluciones) - sumSalidas;
 
             // console.log(total);
-
+            let proveedor = '';
+            if (ultimo !== undefined) {
+                proveedor = ultimo.proveedor;
+            }
             document.getElementById('tb-entradas').innerHTML += `
                 <tr>
                     <td>${element.almacen}</td>
                     <td>${element.descripcion}</td>
                     <td>${element.familia}</td>
-                    <td>${element.proveedor}</td>
+                    <td>${proveedor}</td>
                     <td>${element.medida}</td>
                     <td>
                         <button class="btn btn-success" id="${element._id}" onclick="postExistencia(this.id);"><i class="fa fa-pen"></i></button>
@@ -170,9 +173,12 @@ let postExistencia = function(id){
         document.querySelector('.modal-title').innerHTML = `Registrar entradas`;
         document.querySelector('.modal-body').innerHTML = form;
 
-        document.querySelector('input[name=stockActual]').value = ultimaEntrada.stockActual + ultimaEntrada.cantidad;
-        document.querySelector('input[name=stockMin]').value = ultimaEntrada.stockMin;
-        document.querySelector('input[name=stockMax').value = ultimaEntrada.stockMax;
+        if (ultimaEntrada !== undefined) {
+            document.querySelector('input[name=stockActual]').value = ultimaEntrada.stockActual + ultimaEntrada.cantidad;
+            document.querySelector('input[name=stockMin]').value = ultimaEntrada.stockMin;
+            document.querySelector('input[name=stockMax').value = ultimaEntrada.stockMax;
+        }
+
 
         document.querySelector('.cancelar').addEventListener('click', function () {
             $('#modal').modal('hide');

@@ -62,23 +62,7 @@ router.post('/producto', async function(req, res, next){
             almacen: data.almacen, 
             descripcion: data.descripcion, 
             familia: data.familia, 
-            medida: data.medida,
-            proveedor: '', 
-            entradas: [
-                { 
-                    cantidad: 0,
-                    costo_unidad: 0,
-                    costo_total: 0,
-                    costo_total_iva: 0,
-                    iva: 0,
-                    moneda: 'Mxn',
-                    stockActual: 0,
-                    stockMin: 0,
-                    stockMax: 0,
-                    fecha: new Date(),
-                    factura: ''
-                }
-            ]
+            medida: data.medida
         }, 
         function(err, data){
             if (err) {
