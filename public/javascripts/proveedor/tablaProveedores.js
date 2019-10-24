@@ -28,7 +28,7 @@ let tablaProvedos = function(){
 	`;
 	
 
-	let medidas = fetch('/proveedor/proveedor')
+	let medidas = fetch('/proveedor/proveedor');
     medidas.then(data => {
         let res = data.json();
         return res;

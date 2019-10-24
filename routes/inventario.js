@@ -196,6 +196,7 @@ router.post('/devoluciones', function(req, res){
             console.log(err);
         }else {
             console.log(data);
+            res.send(data);
         }
     });
 });
@@ -210,6 +211,7 @@ router.post('/existencia', function(req,res){
             console.log(err);
         }else {
             console.log(data);
+            res.send(data);
         }
     });
 });

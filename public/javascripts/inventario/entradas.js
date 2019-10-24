@@ -15,12 +15,7 @@ function entradas() {
                                 <th>Descripcion</th>
                                 <th>Familia/Marca</th>
                                 <th>Proveedor</th>
-                                <th>Cantidad</th>
                                 <th>Medida</th>
-                                <th>Moneda</th>
-                                <th>Costo Unitario</th>
-                                <th>Total</th>
-                                <th>Total IVA</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -43,24 +38,24 @@ function entradas() {
             let entrada = element.entradas;
             let ultimo = entrada[entrada.length -1];
 
-            let actual = element.entradas;
-            let sumaActual = actual[actual.length - 1].stockActual + actual[actual.length - 1].cantidad;
+            // let actual = element.entradas;
+            // let sumaActual = actual[actual.length - 1].stockActual + actual[actual.length - 1].cantidad;
             
-            let salida = element.salidas;
-            let sumSalidas = 0;
-            salida.forEach(element => {
-                sumSalidas += element.cantidad;
-            });
+            // let salida = element.salidas;
+            // let sumSalidas = 0;
+            // salida.forEach(element => {
+            //     sumSalidas += element.cantidad;
+            // });
 
-            let devolucion = element.devoluciones;
-            let sumDevoluciones = 0;
-            devolucion.forEach(element => {
-                sumDevoluciones += element.cantidad;
-            });
+            // let devolucion = element.devoluciones;
+            // let sumDevoluciones = 0;
+            // devolucion.forEach(element => {
+            //     sumDevoluciones += element.cantidad;
+            // });
 
-            let total = (sumaActual + sumDevoluciones) - sumSalidas;
+            // let total = (sumaActual + sumDevoluciones) - sumSalidas;
 
-            console.log(total);
+            // console.log(total);
 
             document.getElementById('tb-entradas').innerHTML += `
                 <tr>
@@ -68,12 +63,7 @@ function entradas() {
                     <td>${element.descripcion}</td>
                     <td>${element.familia}</td>
                     <td>${element.proveedor}</td>
-                    <td>${total}</td>
                     <td>${element.medida}</td>
-                    <td>${ultimo.moneda}</td>
-                    <td>${ultimo.costo_unidad}</td>
-                    <td>${ultimo.costo_total}</td>
-                    <td>${ultimo.costo_total_iva}</td>
                     <td>
                         <button class="btn btn-success" id="${element._id}" onclick="postExistencia(this.id);"><i class="fa fa-pen"></i></button>
                     </td>
@@ -237,10 +227,25 @@ let postExistencia = function(id){
                     'Content-Type': 'application/json'
                 }
             }).then(data => {
-                alert(data);
+                document.querySelector('.div-msj').innerHTML = `
+                    <div class="alert alert-success" role="alert">
+                        Entrada registrada
+                    </div>
+                `;
             });
 
             e.preventDefault();
+        });
+    }).then(() => {
+        let medidas = fetch('/proveedor/proveedor');
+        medidas.then(data => {
+            return data.json();
+        }).then(res => {
+            res.forEach(item => {
+                document.querySelector('select[name=proveedor]').innerHTML += `
+                    <option value="${item.proveedor}">${item.proveedor}</option>
+                `;
+            });
         });
     });
 };

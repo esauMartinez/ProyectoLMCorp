@@ -26,7 +26,7 @@ function existencias() {
                             <input type="number" class="form-control" name="costo_total" required disabled>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">IVA</label>
                             <select name="iva" class="form-control" required>
@@ -37,10 +37,16 @@ function existencias() {
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="">Costo total con IVA</label>
                             <input type="number" class="form-control" name="costo_total_iva" required disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Proveedor</label>
+                            <select name="proveedor" class="form-control" required></select>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -82,6 +88,7 @@ function existencias() {
                             </select>
                         </div>
                     </div>
+                    <div class="col-lg-12 div-msj"></div>
                     <div class="col-lg-3 offset-lg-6">
                         <button type="button" class="btn btn-danger btn-block cancelar mt-2" >Regresar</button>
                     </div>

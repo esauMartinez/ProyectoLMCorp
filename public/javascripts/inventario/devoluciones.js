@@ -83,7 +83,6 @@ let gernerarDevolucion = function(id){
 	response.then(res => {
 		return res.json();
 	}).then(res => {
-		console.log(res);
 		createModal();
 		document.querySelector('.modal-body').innerHTML = `
 			<form action="#" id="form-devolver">
@@ -155,7 +154,11 @@ let gernerarDevolucion = function(id){
 					'Content-Type': 'application/json'
 				}
 			}).then(res => {
-				console.log(res);
+				document.querySelector('.msj-registro').innerHTML = `
+					<div class="alert alert-success" role="alert">
+						Salida registrada
+					</div>
+				`;
 			});
 
 			e.preventDefault(e);

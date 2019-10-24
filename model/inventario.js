@@ -16,7 +16,6 @@ const productos = new Schema({
     descripcion: String,
     familia: String,
     medida: String,
-    proveedor: String,
     entradas: [
         {
             cantidad: Number,
@@ -29,7 +28,8 @@ const productos = new Schema({
             stockMin: Number,
             stockMax: Number,
             fecha: Date,
-            factura: String
+            factura: String,
+            proveedor: String,
         }
     ],
     salidas: [
