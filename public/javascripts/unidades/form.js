@@ -104,34 +104,34 @@ let formulario = function(){
 						<button type="button" class="btn btn-primary btn-block"><i class="fa fa-plus"></i></button>
 					</div>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-4">
 					<div class="form-group">
 						<label for="">Km inicial</label>
 						<input type="number" class="form-control" name="km_inicial" required>
 					</div>
 				</div>
-				<div class="col-lg-3">
-					<div class="form-group">
-						<label for="">Poliza de seguro</label>
-						<input type="file" class="form-control" name="poliza" required>
-					</div>
-				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-4">
 					<div class="form-group">
 						<label for="">Vencimiento de poliza</label>
-						<input type="text" class="form-control" name="vencimiento" required>
+						<input type="date" class="form-control" name="vencimiento" required>
 					</div>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-4">
 					<div class="form-group">
 						<label for="">Fecha adquisicion</label>
 						<input type="date" class="form-control" name="fecha_adquisicion" required>
 					</div>
 				</div>
-				<div class="col-lg-12">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label for="">Poliza de seguro</label>
+						<input type="file" class="form-control" name="poliza">
+					</div>
+				</div>
+				<div class="col-lg-6">
 					<div class="form-group">
 						<label for="">Foto</label>
-						<input type="file" class="form-control" name="foto" required>
+						<input type="file" class="form-control" name="foto">
 					</div>
 				</div>
 				<div class="col-lg-12 div-msj"></div>

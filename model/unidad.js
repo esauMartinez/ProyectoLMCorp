@@ -14,7 +14,7 @@ const unidades = new Schema({
 	adquisicion: String,
 	km_inicial: Number,
 	poliza_seguro: String,
-	vencimiento: String,
+	vencimiento: Date,
 	fecha_adquisicion: Date,
 	foto: String
 });
