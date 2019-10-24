@@ -37,7 +37,14 @@ let insertar_form = function(){
 
 	document.getElementById('form-unidad').addEventListener('submit', function (e) {
 		let datos = validar();
-		unidad.postUnidad(datos);
+		let uni = unidad.postUnidad(datos);
+		uni.then(() => {
+			document.querySelector('.div-msj').innerHTML = `
+				<div class="alert alert-success" role="alert">
+					Unidad agregada
+				</div>
+			`;
+		});
 		e.preventDefault();
 	});
 
